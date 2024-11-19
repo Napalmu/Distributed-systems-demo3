@@ -10,12 +10,11 @@ public class Client {
     public static void main(String[] args) throws IOException {
         // TODO: Asiakasohjelma
         Socket s = new Socket("127.0.0.1", 12345);
-        var os = s.getOutputStream();
-        String stringToSend = "Hello World";
-        byte[] bytesToSend = stringToSend.getBytes("utf-8");
-        os.write(bytesToSend);
-        os.close();
+        Socket s2 = new Socket("127.0.0.1", 12345);
+        s.getOutputStream().write(("Hello World").getBytes("utf-8"));
+        s2.getOutputStream().write(("Hello from another thread!").getBytes("utf-8"));
         s.close();
+        s2.close();
     }
 
 }

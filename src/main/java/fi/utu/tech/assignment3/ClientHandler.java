@@ -6,32 +6,20 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class ClientHandler extends Thread {
-    // TODO: Toteuta asiakaspalvelija tänne
         Socket s;
         public ClientHandler(Socket s) {
             this.s = s;
         }
         public void run() {
             try (Socket socket = this.s;
-                 InputStream is = socket.getInputStream()){
+                 InputStream is = socket.getInputStream();
+                 OutputStream os = socket.getOutputStream();) {
                 byte[] received = is.readAllBytes();
                 String receivedMessage = new String(received, "utf-8");
-                System.out.println(receivedMessage);
+                System.out.println("Received: "+ receivedMessage);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-            try {
-                OutputStream os = s.getOutputStream();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-// Waiting for the client to send data
-            while (true) {
-
-            }
-
 
         }
     }
