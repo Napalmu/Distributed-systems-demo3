@@ -8,7 +8,6 @@ import java.net.UnknownHostException;
 public class Client {
 
     public static void main(String[] args) throws IOException {
-        // TODO: Asiakasohjelma
         Socket s = new Socket("127.0.0.1", 12345);
         Socket s2 = new Socket("127.0.0.1", 12345);
         s.getOutputStream().write(("Hello World").getBytes("utf-8"));
